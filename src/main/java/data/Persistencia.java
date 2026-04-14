@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class Persistencia {
-    private static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+    public static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
     private static ArrayList<Responsable> responsables = new ArrayList<>();
     private static ArrayList<Sucursal> sucursales = new ArrayList<>();
     
