@@ -25,31 +25,38 @@ public class Persistencia {
     }
     
     private static void inicializarVehiculos(){
-        Sucursal s1 = sucursales.get(0);
-        Sucursal s2 = sucursales.get(1);
-        
-        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", new Marca("Renault", "Italia"), "Kangoo E-Tech", 2020, 1000, s1, 16);
-        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", new Marca("Ford", "Italia"), "E-Transit", 2021, 1300, s2, 16);
-
-        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", new Marca("Iveco", "Italia"), "Daily", 2023, 1200, s1, 8, 1.5);
-        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", new Marca("Mercedes", "Alemania"), "Sprinter", 2020, 1200, s2, 7, 1);
-        
-        vehiculos.add(v1);
-        vehiculos.add(v2);
-        vehiculos.add(v3);
-        vehiculos.add(v4);
+        // Los vehículos se agregan manualmente desde la ventana Agregar Vehículo
     }
-    
+
     public static ArrayList<Vehiculo> getVehiculos(){
         return vehiculos;
     }
-    
+
     public static Optional<Vehiculo> getVehiculo(String patente){
         return vehiculos.stream()
                 .filter(v -> v.getPatente().equals(patente))
                 .findFirst();
     }
-    
+
+    public static ArrayList<Marca> getMarcas(){
+        ArrayList<Marca> marcas = new ArrayList<>();
+        for(Vehiculo v : vehiculos){
+            Marca m = v.getMarca();
+            if(!marcas.contains(m)){
+                marcas.add(m);
+            }
+        }
+        return marcas;
+    }
+
+    public static ArrayList<Sucursal> getSucursales(){
+        return new ArrayList<>(sucursales);
+    }
+
+    public static ArrayList<Responsable> getResponsables(){
+        return new ArrayList<>(responsables);
+    }
+
     public static void inicializar(){
         inicializarResponsables();
         inicializarSucursales();
