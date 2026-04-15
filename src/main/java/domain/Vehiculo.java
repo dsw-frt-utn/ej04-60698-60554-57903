@@ -22,7 +22,11 @@ public abstract class Vehiculo {
     public String getPatente() {
         return patente;
     }
-    
+
+    public Marca getMarca() {
+        return marca;
+    }
+
     public VehiculoTipo getTipo(){
         return tipo;
     }

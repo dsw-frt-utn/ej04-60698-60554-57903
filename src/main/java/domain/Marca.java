@@ -27,6 +27,17 @@ public class Marca {
     public void setPais(String Pais) {
         this.Pais = Pais;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Marca)) return false;
+        Marca other = (Marca) obj;
+        return this.Nombre.equals(other.Nombre) && this.Pais.equals(other.Pais);
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(Nombre, Pais);
+    }
 }
