@@ -14,16 +14,28 @@ public class ListarVehiculosView extends javax.swing.JFrame {
      */
     public ListarVehiculosView() {
         initComponents();
+        setLocationRelativeTo(null);
         listarVehiculos();
+    }
+
+    public void setMenuPadre(MenuView menuPadre){
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                menuPadre.setVisible(true);
+            }
+        });
     }
     private void listarVehiculos(){
         ArrayList<VehiculoViewModel> vehiculos = Controlador.getVehiculos();
-        vehiculosGrid.setModel(new DefaultTableModel(new Object[][] {}, 
-            new String[] { "Patente","Vehículo", "Tipo", "Sucursal", "Cap.Carga", "Km/litro", "Año", "Litros extra", "Km a recorrer" }));
-        
+        vehiculosGrid.setModel(new DefaultTableModel(new Object[][] {},
+            new String[] { "Patente","Marca", "Vehículo", "Tipo", "Sucursal", "Cap.Carga", "Km/litro", "Año", "Litros extra", "Km a recorrer" }));
+
         for(VehiculoViewModel vehiculo : vehiculos){
             ((DefaultTableModel)vehiculosGrid.getModel()).addRow(new Object[] {
                 vehiculo.getPatente(),
+                vehiculo.getMarca(),
                 vehiculo.getVehiculo(),
                 vehiculo.getTipo(),
                 vehiculo.getSucursal(),
@@ -158,7 +170,7 @@ public class ListarVehiculosView extends javax.swing.JFrame {
          TableModel table = vehiculosGrid.getModel();
          Map<String, Double> lista = new HashMap<>();
          for(int i=0;i< table.getRowCount();i++){
-             lista.put((String)table.getValueAt(i, 0), (Double)table.getValueAt(i, 8));
+             lista.put((String)table.getValueAt(i, 0), (Double)table.getValueAt(i, 9));
          }
          double[] consumos = Controlador.calcularConsumos(lista);
          totalConsumoElectricosValue.setText(String.format("%.2f%n kWh", consumos[0]));
