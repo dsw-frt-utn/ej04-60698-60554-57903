@@ -59,7 +59,7 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {
-        AgregarVehiculoView view = new AgregarVehiculoView(this);
+        AgregarVehiculosView view = new AgregarVehiculosView(this);
         view.setVisible(true);
     }
 

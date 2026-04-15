@@ -22,11 +22,18 @@ import javax.swing.JTextField;
  */
 public class AgregarVehiculosView extends javax.swing.JFrame {
 
+    private MenuView menuView;
+
     /**
      * Creates new form AgregarVehiculo
      */
     public AgregarVehiculosView() {
         initComponents();
+    }
+
+    public AgregarVehiculosView(MenuView menuView) {
+        initComponents();
+        this.menuView = menuView;
     }
     
     public void ejecutar(){
@@ -441,8 +448,7 @@ public class AgregarVehiculosView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        menuView menu = new menuView();
-        menu.setVisible(true);
+        menuView.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
